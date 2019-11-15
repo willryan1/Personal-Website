@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
+html {
+	scroll-behavior: smooth;
+}
+
 html, body {
 	margin: 0;
 	padding: 0;
@@ -24,10 +28,9 @@ html, body {
 	width: 100%;
 	line-height: 90px;
 	text-align: center;
-	/*
-	opacity: 0.8;
-	filter: alpha (opacity=80):
-	*/
+	opacity: 0.9;
+	filter: alpha (opacity=90);
+	z-index:500;
 }
 
 #nav2 h1 {
@@ -144,6 +147,70 @@ p {
 	}
 }
 
+#profile {
+	width: 100%;
+	height: 750px;
+}
+
+#prof_pic {
+	width: 300px;
+	height: 300px;
+	background-image: url('../pictures/IMG_2974.JPG');
+	background-size: cover;
+	border-radius: 50%;
+	position: relative;
+	top: 110px;
+	left: 26%;
+}
+
+#profile h1 {
+	font-family: 'Raleway', sans-serif;
+	color: #036A81;
+	font-size: 200%;
+}
+
+#about_header {
+	position: relative;
+	left: 56%;
+	top: -168px;
+	width: 170px;
+}
+
+#details {
+	position: relative;
+	left: 31.9%;
+	top: 80px;
+	width: 150px;
+}
+
+#deets {
+	position: relative;
+	left: 26%;
+	top: 85px;
+	width: 300px;
+}
+
+#deets p {
+	font-family:"Open Sans";
+	font-size: 16px;
+	font-style: normal;
+	text-align: center;
+}
+
+#prof_desc {
+	width: 400px;
+	height 400px;
+	position: relative;
+	left: 49%;
+	top: -330px;
+}
+
+#prof_desc p {
+	font-family:"Open Sans";
+	font-size: 16px;
+	font-style: normal;
+}
+
 #footer {
 	width: 100%;
 	height: 150px;
@@ -219,12 +286,12 @@ p {
 
 #mainform {
 	width: 100%;
-	height: 950px;
+	height: 900px;
 	background: #ffa300;
 }
 #form {
 	width: 100%;
-	height: 780px;
+	height: 700px;
 	background: #3d5265;
 	color: white;
 	line-height: 34px;
