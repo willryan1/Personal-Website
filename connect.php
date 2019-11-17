@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
 </head>
+
 <body>
 	<div id="nav_contact">
 		<div id="nav2">
@@ -104,6 +105,7 @@
 		<br>
 		<input type="submit" value="Submit" id="sub" name="submit"><br>
 		<div class="star">*</div> all fields are required
+		<span id="response"><?php echo $response_message;?></span>
 	</form>
 	</div>
 	<div id="extra">
@@ -149,11 +151,42 @@ window.onclick = function(event) {
   	}
 }
 </script>
+<?php
 	
+$username = filter_input(INPUT_POST,'username');
+$email = filter_input(INPUT_POST,'email');
+$state = filter_input(INPUT_POST,'state_val');
+$comment = filter_input(INPUT_POST,'comment');
 	
+if(!empty($username) && !empty($email) && !empty($state) && !empty($comment)) {
+	$host = "localhost";
+	$dbUsername = "mysqladmin";
+	$dbPassword = "4n0m4ly";
+	$dbname = "p_web_storage";
 	
+	$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
 	
-	
-	
+	$response_message = "";
+		
+	if (mysqli_connect_error()) {
+		die('Connect Error ('. mysqli_connect_errno() .') '. mysqli_connect_error());
+		
+	} else {
+		$sql = "INSERT INTO contact_request (name, email, state, comment) VALUES ('$username','$email','$state','$comment')";
+		if ($conn->query($sql)) {
+			$response_message = '<h1>Your submission has been recieved</h1>';
+		} else {
+			$response_message = "Error: ". $sql ."<br>". $conn->error;
+		}
+		$conn->close();
+	}
+} else {
+	echo "Something is empty";
+	die();
+}
+
+?>
+
 </body>
+
 </html>

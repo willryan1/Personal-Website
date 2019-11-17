@@ -20,6 +20,7 @@ html, body {
 	height: 100%;
 	background: url('../Pictures/Goodimage123.jpg') no-repeat 50% 50%;
 	background-size: cover;
+	background-attachment: fixed;
 }
 #nav2 {
 	position: fixed;
