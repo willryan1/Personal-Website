@@ -287,12 +287,12 @@ p {
 
 #mainform {
 	width: 100%;
-	height: 900px;
+	height: 915px;
 	background: #ffa300;
 }
 #form {
 	width: 100%;
-	height: 700px;
+	height: 715px;
 	background: #3d5265;
 	color: white;
 	line-height: 34px;
@@ -360,4 +360,17 @@ form {
 	border-radius: 5px;
 	border: 1px solid #CCC;
 	color: #757576;
+}
+
+#response {
+	width: 100%;
+}
+
+#response p {
+	font-family: Times;
+	line-height: 24px;
+	font-size: 16px;
+	color: white;
+	margin-left: 0%;
+	margin-top: 1%;
 }

@@ -14,6 +14,49 @@
 </head>
 
 <body>
+
+<?php
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		$username = filter_input(INPUT_POST,'username');
+		$email = filter_input(INPUT_POST,'email');
+		$state = filter_input(INPUT_POST,'state_val');
+		$comment = filter_input(INPUT_POST,'comment');
+			
+		if(!empty($username) && !empty($email) && !empty($state) && !empty($comment)) {
+			$host = "localhost";
+			$dbUsername = "mysqladmin";
+			$dbPassword = "4n0m4ly";
+			$dbname = "p_web_storage";
+			
+			$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
+			
+			$response_message = "";
+				
+			if (mysqli_connect_error()) {
+				die('Connect Error ('. mysqli_connect_errno() .') '. mysqli_connect_error());
+				
+			} else {
+				$results = mysqli_query($conn, "select * from contact_request where email='".$email."'");
+				$row = mysqli_num_rows($results);
+				if ($row > 0){
+					$response_message = 'That email has already been used, submission failed.';
+				} else {
+					$sql = "INSERT INTO contact_request (name, email, state, comment) VALUES ('$username','$email','$state','$comment')";
+					if ($conn->query($sql)) {
+						$response_message = 'Your submission has been recieved!';
+					} else {
+						$response_message = "Error: ". $sql ."<br>". $conn->error;
+					}
+					$conn->close();
+				}
+			}
+		} else {
+			$response_message = 'There was a missing field, submission failed.';
+		}
+	}
+
+?>
+
 	<div id="nav_contact">
 		<div id="nav2">
 			
@@ -50,7 +93,7 @@
 			<option value="al">Alabama</option>
 			<option value="ak">Alaska</option>
 			<option value="az">Arizona</option>
-			<option value="ar">Arkanas</option>
+			<option value="ar">Arkansas</option>
 			<option value="ca">California</option>
 			<option value="co">Colorado</option>
 			<option value="ct">Connecticut</option>
@@ -105,7 +148,7 @@
 		<br>
 		<input type="submit" value="Submit" id="sub" name="submit"><br>
 		<div class="star">*</div> all fields are required
-		<span id="response"><?php echo $response_message;?></span>
+		<span id="response"><p><?php echo $response_message;?></p></span>
 	</form>
 	</div>
 	<div id="extra">
@@ -151,41 +194,6 @@ window.onclick = function(event) {
   	}
 }
 </script>
-<?php
-	
-$username = filter_input(INPUT_POST,'username');
-$email = filter_input(INPUT_POST,'email');
-$state = filter_input(INPUT_POST,'state_val');
-$comment = filter_input(INPUT_POST,'comment');
-	
-if(!empty($username) && !empty($email) && !empty($state) && !empty($comment)) {
-	$host = "localhost";
-	$dbUsername = "mysqladmin";
-	$dbPassword = "4n0m4ly";
-	$dbname = "p_web_storage";
-	
-	$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
-	
-	$response_message = "";
-		
-	if (mysqli_connect_error()) {
-		die('Connect Error ('. mysqli_connect_errno() .') '. mysqli_connect_error());
-		
-	} else {
-		$sql = "INSERT INTO contact_request (name, email, state, comment) VALUES ('$username','$email','$state','$comment')";
-		if ($conn->query($sql)) {
-			$response_message = '<h1>Your submission has been recieved</h1>';
-		} else {
-			$response_message = "Error: ". $sql ."<br>". $conn->error;
-		}
-		$conn->close();
-	}
-} else {
-	echo "Something is empty";
-	die();
-}
-
-?>
 
 </body>
 
