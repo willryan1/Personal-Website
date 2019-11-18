@@ -159,9 +159,9 @@ p {
 	background-image: url('../pictures/IMG_2974.JPG');
 	background-size: cover;
 	border-radius: 50%;
-	position: relative;
-	top: 110px;
-	left: 26%;
+	position: absolute;
+	top: 114%;
+	left: 23%;
 }
 
 #profile h1 {
@@ -171,23 +171,25 @@ p {
 }
 
 #about_header {
-	position: relative;
-	left: 56%;
-	top: -168px;
-	width: 170px;
+	position: absolute;
+	left: 50%;
+	top: 116%;
+	width: 400px;
+	text-align: center;
 }
 
 #details {
-	position: relative;
-	left: 31.9%;
-	top: 80px;
-	width: 150px;
+	position: absolute;
+	left: 23%;
+	top: 153%;
+	width: 300px;
+	text-align: center;
 }
 
 #deets {
-	position: relative;
-	left: 26%;
-	top: 85px;
+	position: absolute;
+	left: 23%;
+	top: 158%;
 	width: 300px;
 }
 
@@ -201,9 +203,9 @@ p {
 #prof_desc {
 	width: 400px;
 	height 400px;
-	position: relative;
-	left: 49%;
-	top: -330px;
+	position: absolute;
+	left: 50%;
+	top: 124%;
 }
 
 #prof_desc p {
